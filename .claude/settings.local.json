@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd server:*)",
+      "Bash(cd C:/workProjects/timekeeping/server && npx tsc --noEmit 2>&1 | head -20)",
+      "Bash(npx tsc:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(git restore:*)"
+    ]
+  }
+}
