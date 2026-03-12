@@ -6,7 +6,10 @@
       "Bash(npx tsc:*)",
       "Bash(git add:*)",
       "Bash(git reset:*)",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(cd C:/workProjects/timekeeping/frontend && npm install @mui/material @emotion/react @emotion/styled @mui/icons-material)",
+      "Bash(cd C:/workProjects/timekeeping/frontend && npm run typecheck 2>&1)",
+      "Bash(npm run:*)"
     ]
   }
 }

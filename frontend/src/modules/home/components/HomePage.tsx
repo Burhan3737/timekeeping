@@ -1,37 +1,33 @@
-import './HomePage.css'
+import { Typography, Box, Paper } from '@mui/material'
+import { useNavigationMode } from '@core/state/appStore'
 
 export function HomePage() {
+  const navigationMode = useNavigationMode()
+  const isSidebarMode = navigationMode === 'sidebar'
+
+  // In tiles mode, the homepage content is shown in MainLayout
+  // In sidebar mode, we show the dashboard content here
+  if (!isSidebarMode) {
+    return null
+  }
+
   return (
-    <div className="home-page">
-      <section className="home-page__hero">
-        <h1 className="home-page__title">Welcome to Timekeeping</h1>
-        <p className="home-page__subtitle">
-          Track your time efficiently and generate insightful reports
-        </p>
-      </section>
+    <Box>
+      <Typography variant="h4" component="h1" gutterBottom>
+        Dashboard
+      </Typography>
+      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+        Welcome to your timekeeping dashboard. Track and manage your work hours efficiently.
+      </Typography>
 
-      <section className="home-page__features">
-        <div className="home-page__feature-card">
-          <h3 className="home-page__feature-title">Track Time</h3>
-          <p className="home-page__feature-description">
-            Log your work hours with ease. Start and stop timers or add entries manually.
-          </p>
-        </div>
-
-        <div className="home-page__feature-card">
-          <h3 className="home-page__feature-title">View Reports</h3>
-          <p className="home-page__feature-description">
-            Get detailed insights into how you spend your time with visual reports.
-          </p>
-        </div>
-
-        <div className="home-page__feature-card">
-          <h3 className="home-page__feature-title">Export Data</h3>
-          <p className="home-page__feature-description">
-            Export your time entries to various formats for billing and analysis.
-          </p>
-        </div>
-      </section>
-    </div>
+      <Paper sx={{ p: 4, textAlign: 'center', color: 'text.secondary' }}>
+        <Typography variant="h6" gutterBottom>
+          Dashboard Content Coming Soon
+        </Typography>
+        <Typography variant="body2">
+          Use the sidebar navigation to access Time Entries and Reports
+        </Typography>
+      </Paper>
+    </Box>
   )
 }

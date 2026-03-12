@@ -1,5 +1,34 @@
 # CLAUDE.md - Project Conventions
 
+## Project Knowledge
+Tech Stack: React, Typescript, MUI
+File Structure/ Architecture:
+src/modules/${moduleName}/index.tsx: contains the business logic of the module and handling of module state and side effects (apis etc)
+src/modules/${moduleName}/types.ts: contains the interfaces, types to be defined for the module
+src/modules/${moduleName}/${moduleNameView}.tsx: view layer of the module, only view related state might be managed here. Can be multiple
+src/modules/${moduleName}/utils.tsx: utility functions for the module (only module related logic). Would mostly be imported in the index.js file of the project
+src/logic/${logicModuleName.ts}: App specific business logic, rules and core calculations would be written here. It can be used in multiple modules through out the app.
+src/shared/components/${reusableComponent}: reusable components which can be used throughout the app will be stored here
+src/shared/utils/${utilsFolder or fileName}: shared utility functions/files that can be used through out the app will be stored here (dateUtils, formatters etc)
+
+## Rules
+Always remember to use MUI for creating components.
+Make sure to keep the UI and theming consistent (you can lookup the ThemeContext for it)
+Always follow the defined file/folder structure
+Try to make reusable view components (where applicable) which are always consistent with the theme of the the app (buttons) and store them at shared/components/${reusableComponent}
+For view layer changes always recommend reusable components stored at shared/components/${reusableComponent} if applicable
+Utility functions that you think might be generic and can be used throughout the app (i.e dateUtils) must be stored at shared/utils/${utilsFolder or fileName}
+Write as minimal code as possible and DRY!
+No fancy architecture that confuses new developers.
+You need to to follow the defined folder/file structure.
+The src/context folder consists of all the states that need to persist globally throughout the app. So you need to use them if when required rather than creating new ones.
+When in plan mode, always explain your solution thoroughly and ask follow up questions to explain your plan.
+When in plan mode, mention all changes required to the files so the human engineer can review them before you actually implement them.
+Any rules that are recurrent and defined by the user in the prompts needs to be added into the CLAUDE.md file under the rules section.
+Specifically use the frontend-design skill while creating view components
+Use any other skill to improve your productivity.
+As the project will start to expand we need to store the core context in CLAUDE.md/AGENTS.md so each new agent session has all the context. Be sure to keep it concise and compact so it does not consume a lot of tokens
+
 ## Project Overview
 
 Enterprise web application for timekeeping/time tracking built with React 18+ and Node.js/Express.
@@ -8,7 +37,7 @@ Enterprise web application for timekeeping/time tracking built with React 18+ an
 
 ### Layered Architecture
 1. **View Layer**: React components (presentational only)
-2. **Logic Layer**: Business rules in services/hooks (decoupled from UI)
+2. **Logic Layer**: Business rules in src/logic (decoupled from UI)
 3. **Data Layer**: API clients and state management
 
 ### Monorepo Structure
