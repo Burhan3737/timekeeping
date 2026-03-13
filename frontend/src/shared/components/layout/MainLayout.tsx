@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {
   Box,
   AppBar,
@@ -13,6 +13,7 @@ import ViewSidebarIcon from '@mui/icons-material/ViewSidebar'
 import GridViewIcon from '@mui/icons-material/GridView'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
+import HomeIcon from '@mui/icons-material/Home'
 import { Sidebar } from '@shared/components/navigation/Sidebar'
 import {
   useNavigationMode,
@@ -31,6 +32,8 @@ export function MainLayout({ children }: MainLayoutProps) {
   const { toggleNavigationMode, toggleTheme } = useAppActions()
   const isSidebarMode = navigationMode === 'sidebar'
   const isLight = currentTheme === 'light'
+  const location = useLocation()
+  const navigate = useNavigate()
 
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
@@ -74,6 +77,13 @@ export function MainLayout({ children }: MainLayoutProps) {
             >
               Chronos
             </Typography>
+            {!isSidebarMode && location.pathname !== '/' && (
+              <Tooltip title="Go to Home">
+                <IconButton onClick={() => navigate('/')} color="primary" size="small">
+                  <HomeIcon />
+                </IconButton>
+              </Tooltip>
+            )}
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>

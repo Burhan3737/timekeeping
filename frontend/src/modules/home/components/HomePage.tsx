@@ -5,6 +5,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import BarChartIcon from '@mui/icons-material/BarChart'
 import ScheduleIcon from '@mui/icons-material/Schedule'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import { NavigationTiles } from '@shared/components/navigation/NavigationTiles'
 
 export function HomePage() {
   const navigationMode = useNavigationMode()
@@ -81,6 +82,10 @@ export function HomePage() {
           >
             Start Tracking
           </Button>
+
+          <Box sx={{ mt: 6 }}>
+            <NavigationTiles />
+          </Box>
         </Box>
       ) : (
         // Sidebar Mode: Compact Header

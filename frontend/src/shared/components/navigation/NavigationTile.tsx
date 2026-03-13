@@ -8,9 +8,10 @@ interface NavigationTileProps {
   description: string
   to: string
   color?: string
+  onNavigate?: () => void
 }
 
-export function NavigationTile({ icon, title, description, to, color = 'primary.main' }: NavigationTileProps) {
+export function NavigationTile({ icon, title, description, to, color = 'primary.main', onNavigate }: NavigationTileProps) {
   const navigate = useNavigate()
 
   return (
@@ -39,7 +40,7 @@ export function NavigationTile({ icon, title, description, to, color = 'primary.
         },
       }}
     >
-      <CardActionArea onClick={() => navigate(to)} sx={{ height: '100%', textAlign: 'center', p: 1 }}>
+      <CardActionArea onClick={() => { navigate(to); onNavigate?.() }} sx={{ height: '100%', textAlign: 'center', p: 1 }}>
         <CardContent sx={{ pt: 3 }}>
           <Box
             sx={{
