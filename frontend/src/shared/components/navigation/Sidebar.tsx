@@ -8,22 +8,17 @@ import {
   ListItemText,
   IconButton,
   Box,
+  Typography,
+  Divider,
+  Tooltip,
 } from '@mui/material'
-import DashboardIcon from '@mui/icons-material/Dashboard'
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
-import AssessmentIcon from '@mui/icons-material/Assessment'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { useSidebarCollapsed, useAppActions } from '@core/state/appStore'
+import { navigationConfig } from '@core/routing/navigationConfig'
 
-const drawerWidth = 240
+const drawerWidth = 248
 const collapsedWidth = 64
-
-const navigationItems = [
-  { icon: DashboardIcon, label: 'Dashboard', to: '/' },
-  { icon: AccessTimeIcon, label: 'Time Entries', to: '/time-entries' },
-  { icon: AssessmentIcon, label: 'Reports', to: '/reports' },
-]
 
 export function Sidebar() {
   const collapsed = useSidebarCollapsed()
@@ -45,6 +40,8 @@ export function Sidebar() {
               duration: theme.transitions.duration.leavingScreen,
             }),
           overflowX: 'hidden',
+          borderRight: '1px solid',
+          borderColor: 'divider',
         },
       }}
     >
@@ -52,65 +49,110 @@ export function Sidebar() {
         {/* AppBar spacer */}
         <Box sx={{ minHeight: 64 }} />
 
+        {/* Collapse toggle */}
         <Box
           sx={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: collapsed ? 'center' : 'flex-end',
-            p: 1,
-            borderBottom: 1,
+            px: 1,
+            py: 0.5,
+            borderBottom: '1px solid',
             borderColor: 'divider',
           }}
         >
-          <IconButton onClick={toggleSidebar}>
-            {collapsed ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          <IconButton onClick={toggleSidebar} size="small">
+            {collapsed ? <ChevronRightIcon fontSize="small" /> : <ChevronLeftIcon fontSize="small" />}
           </IconButton>
         </Box>
 
-        <List sx={{ flex: 1, pt: 2 }}>
-          {navigationItems.map((item) => {
-            const Icon = item.icon
-            const isActive = location.pathname === item.to
+        {/* Navigation sections */}
+        <Box sx={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', py: 1 }}>
+          {navigationConfig.map((section, sectionIndex) => (
+            <Box key={section.title}>
+              {sectionIndex > 0 && <Divider sx={{ my: 1 }} />}
 
-            return (
-              <ListItem key={item.label} disablePadding sx={{ display: 'block' }}>
-                <ListItemButton
-                  component={Link}
-                  to={item.to}
-                  selected={isActive}
+              {!collapsed && (
+                <Typography
+                  variant="caption"
                   sx={{
-                    minHeight: 48,
-                    justifyContent: collapsed ? 'center' : 'initial',
-                    px: collapsed ? 2 : 3,
+                    px: 3,
+                    py: 0.5,
+                    display: 'block',
+                    fontWeight: 700,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: 'text.disabled',
+                    fontSize: '0.65rem',
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: collapsed ? 0 : 2,
-                      justifyContent: 'center',
-                      color: isActive ? 'primary.main' : 'inherit',
-                    }}
-                  >
-                    <Icon />
-                  </ListItemIcon>
-                  {!collapsed && (
-                    <ListItemText
-                      primary={item.label}
-                      sx={{
-                        opacity: collapsed ? 0 : 1,
-                        '& .MuiListItemText-primary': {
-                          fontWeight: isActive ? 600 : 400,
-                          color: isActive ? 'primary.main' : 'inherit',
-                        },
-                      }}
-                    />
-                  )}
-                </ListItemButton>
-              </ListItem>
-            )
-          })}
-        </List>
+                  {section.title}
+                </Typography>
+              )}
+
+              <List disablePadding>
+                {section.items.map((item) => {
+                  const Icon = item.icon
+                  const isActive = location.pathname === item.path
+
+                  const button = (
+                    <ListItem key={item.label} disablePadding sx={{ display: 'block' }}>
+                      <ListItemButton
+                        component={Link}
+                        to={item.path}
+                        selected={isActive}
+                        sx={{
+                          minHeight: 40,
+                          justifyContent: collapsed ? 'center' : 'initial',
+                          px: collapsed ? 0 : 2,
+                          mx: collapsed ? 0 : 1,
+                          borderRadius: collapsed ? 0 : 1.5,
+                          '&.Mui-selected': {
+                            bgcolor: 'primary.main',
+                            color: 'primary.contrastText',
+                            '&:hover': { bgcolor: 'primary.dark' },
+                          },
+                          '&:hover': {
+                            bgcolor: isActive ? 'primary.dark' : 'action.hover',
+                          },
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: collapsed ? 0 : 1.5,
+                            justifyContent: 'center',
+                            color: isActive ? 'primary.contrastText' : 'text.secondary',
+                          }}
+                        >
+                          <Icon sx={{ fontSize: 20 }} />
+                        </ListItemIcon>
+                        {!collapsed && (
+                          <ListItemText
+                            primary={item.label}
+                            primaryTypographyProps={{
+                              fontSize: '0.85rem',
+                              fontWeight: isActive ? 600 : 400,
+                              color: isActive ? 'primary.contrastText' : 'text.primary',
+                            }}
+                          />
+                        )}
+                      </ListItemButton>
+                    </ListItem>
+                  )
+
+                  return collapsed ? (
+                    <Tooltip key={item.label} title={item.label} placement="right">
+                      {button}
+                    </Tooltip>
+                  ) : (
+                    button
+                  )
+                })}
+              </List>
+            </Box>
+          ))}
+        </Box>
       </Box>
     </Drawer>
   )

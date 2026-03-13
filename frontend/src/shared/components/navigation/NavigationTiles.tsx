@@ -1,32 +1,6 @@
-import { Box } from '@mui/material'
-import DashboardIcon from '@mui/icons-material/Dashboard'
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
-import AssessmentIcon from '@mui/icons-material/Assessment'
+import { Box, Typography } from '@mui/material'
 import { NavigationTile } from './NavigationTile'
-
-const navigationItems = [
-  {
-    icon: <DashboardIcon sx={{ fontSize: 48 }} />,
-    title: 'Dashboard',
-    description: 'View your timekeeping overview and quick stats',
-    to: '/',
-    color: 'primary',
-  },
-  {
-    icon: <AccessTimeIcon sx={{ fontSize: 48 }} />,
-    title: 'Time Entries',
-    description: 'Log and manage your work hours efficiently',
-    to: '/time-entries',
-    color: 'secondary',
-  },
-  {
-    icon: <AssessmentIcon sx={{ fontSize: 48 }} />,
-    title: 'Reports',
-    description: 'Generate detailed reports and insights',
-    to: '/reports',
-    color: 'info',
-  },
-]
+import { navigationConfig } from '@core/routing/navigationConfig'
 
 interface NavigationTilesProps {
   onNavigate?: () => void
@@ -34,15 +8,41 @@ interface NavigationTilesProps {
 
 export function NavigationTiles({ onNavigate }: NavigationTilesProps = {}) {
   return (
-    <Box
-      sx={{
-        display: 'grid',
-        gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-        gap: 3,
-      }}
-    >
-      {navigationItems.map((item) => (
-        <NavigationTile key={item.title} {...item} onNavigate={onNavigate} />
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+      {navigationConfig.map((section) => (
+        <Box key={section.title}>
+          <Typography
+            variant="overline"
+            sx={{
+              display: 'block',
+              mb: 2,
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+              color: 'text.secondary',
+            }}
+          >
+            {section.title}
+          </Typography>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+              gap: 2,
+            }}
+          >
+            {section.items.map((item) => (
+              <NavigationTile
+                key={item.path}
+                icon={<item.icon sx={{ fontSize: 40 }} />}
+                title={item.label}
+                description={item.description}
+                to={item.path}
+                color={item.color}
+                onNavigate={onNavigate}
+              />
+            ))}
+          </Box>
+        </Box>
       ))}
     </Box>
   )
