@@ -9,6 +9,9 @@ import { UserShiftsPage } from '@modules/userShifts'
 import { TimeSessionsPage, SessionHistoryPage } from '@modules/timeSessions'
 import { OvertimePage } from '@modules/overtime'
 import { TimeSheetsPage } from '@modules/timeSheets'
+import { OvertimeRequestsPage } from '@modules/overtimeRequests'
+import { EmployeesPage } from '@modules/employees'
+import { SummarySheetPage } from '@modules/summarySheet'
 import { ThemeProvider } from '@core/theme'
 
 // Placeholder for unbuilt pages — replace with real component imports as modules are built
@@ -37,9 +40,9 @@ function App() {
 
           {/* Reporting */}
           <Route path="/reporting/time-sheets" element={<TimeSheetsPage />} />
-          <Route path="/reporting/overtime-requests" element={<ComingSoon title="Overtime Requests" />} />
-          <Route path="/reporting/employees" element={<ComingSoon title="Employees" />} />
-          <Route path="/reporting/summary-sheet" element={<ComingSoon title="Summary Sheet" />} />
+          <Route path="/reporting/overtime-requests" element={<OvertimeRequestsPage />} />
+          <Route path="/reporting/employees" element={<EmployeesPage />} />
+          <Route path="/reporting/summary-sheet" element={<SummarySheetPage />} />
           <Route path="/reporting/alerts" element={<ComingSoon title="Alerts" />} />
 
           {/* Setup */}

@@ -47,9 +47,9 @@ Timekeeping is an enterprise web application for field organizations to accurate
 | Time Sessions | `modules/time-sessions.md` | 4b | `view-complete` | users, charge-codes, job-roles, locations |
 | Overtime | `modules/overtime.md` | 4c | `view-complete` | time-sessions, charge-codes |
 | Time Sheets | `modules/time-sheets.md` | 5a | `view-complete` | time-sessions |
-| Overtime Requests | `modules/overtime-requests.md` | 5b | `view-pending` | overtime |
-| Employees | `modules/employees.md` | 5c | `view-pending` | users, time-sessions, overtime |
-| Summary Sheet | `modules/summary-sheet.md` | 5d | `view-pending` | time-sessions |
+| Overtime Requests | `modules/overtime-requests.md` | 5b | `view-complete` | overtime |
+| Employees | `modules/employees.md` | 5c | `view-complete` | users, time-sessions, overtime |
+| Summary Sheet | `modules/summary-sheet.md` | 5d | `view-complete` | time-sessions |
 | Alerts | `modules/alerts.md` | 6a | `view-pending` | time-sessions, overtime |
 
 ## Build Order
@@ -87,8 +87,8 @@ Reference data modules — CRUD patterns established here.
 - ✅ Shared components (PageHeader, StatusBadge, ConfirmDialog, FormDialog, StatCard, DataTable, FilterBar, TimeGrid24hr)
 - ✅ Phase 2 Admin Setup (Locations, Charge Codes, Job Roles, Users + Profile)
 - ✅ Phase 4 Core Timekeeping view layer (User Shifts, Time Sessions, Overtime)
-- 🔲 Phase 5 Reporting view layer (Time Sheets, OT Requests, Employees, Summary Sheet) ← next
-- 🔲 Phase 6 Notifications view layer (Alerts)
+- ✅ Phase 5 Reporting view layer (Time Sheets, OT Requests, Employees, Summary Sheet)
+- 🔲 Phase 6 Notifications view layer (Alerts) ← next
 - 🔲 Phase 3 Auth view layer (Login page, PIN entry) ← after all feature views
 
 **Build sequence within each phase**:

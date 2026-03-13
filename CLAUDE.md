@@ -304,6 +304,9 @@ Phase 6 (Notifications): alerts
 - **4b Time Sessions** (view layer): TimeSessionsPage, TimeEntryList, TimeEntryFormDialog, SessionHistoryPage — StatCards, entry CRUD, submit flow, history with filters
 - **4c Overtime** (view layer): OvertimePage, OvertimeRequestFormDialog — StatCards, tabs (pending/history), request CRUD, cancel flow, threshold alerts
 - **5a Time Sheets** (view layer): TimeSheetsPage, EmployeeTimeCard, EntryEditDialog — date/location filter, TimeGrid24hr per employee, approve/reject/bulk-approve, supervisor entry edit with audit note
+- **5b Overtime Requests** (view layer): OvertimeRequestsPage, ReviewDialog — pending/all tabs, FilterBar, approve/reject with notes (rejection requires note)
+- **5c Employees** (view layer): EmployeesPage — StatCards, DataTable with hours/status/OT columns, location+role filters, row click → time sessions
+- **5d Summary Sheet** (view layer): SummarySheetPage, SummaryTable — expandable employee×day grid, charge code breakdown, OT highlights, CSV export
 
 ### Running the Project
 ```bash
@@ -337,7 +340,10 @@ frontend/src/
     ├── userShifts/    # 4a — UserShiftsPage, ShiftFormDialog (view layer ✅)
     ├── timeSessions/  # 4b — TimeSessionsPage, TimeEntryList, TimeEntryFormDialog, SessionHistoryPage (view layer ✅)
     ├── overtime/      # 4c — OvertimePage, OvertimeRequestFormDialog (view layer ✅)
-    └── timeSheets/    # 5a — TimeSheetsPage, EmployeeTimeCard, EntryEditDialog (view layer ✅)
+    ├── timeSheets/    # 5a — TimeSheetsPage, EmployeeTimeCard, EntryEditDialog (view layer ✅)
+    ├── overtimeRequests/ # 5b — OvertimeRequestsPage, ReviewDialog (view layer ✅)
+    ├── employees/     # 5c — EmployeesPage (view layer ✅)
+    └── summarySheet/  # 5d — SummarySheetPage, SummaryTable (view layer ✅)
 
 server/src/
 ├── config/           # Environment configuration
@@ -351,5 +357,6 @@ Last updated: 2026-03-13
 **Current strategy**: View layer first across ALL phases before any business logic or API wiring.
 **Phase 2 view layer**: ✅ Complete (Locations, Charge Codes, Job Roles, Users)
 **Phase 4 view layer**: ✅ Complete (User Shifts, Time Sessions, Overtime)
-**Next step**: Phase 5 view layer — Overtime Requests (5b)
+**Phase 5 view layer**: ✅ Complete (Time Sheets, Overtime Requests, Employees, Summary Sheet)
+**Next step**: Phase 6 view layer — Alerts (6a)
 **Then**: OT Requests (5b) → Employees (5c) → Summary Sheet (5d) → Phase 6 (Alerts) → Phase 3 Auth views → API wiring pass
