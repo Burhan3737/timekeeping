@@ -297,6 +297,8 @@ Phase 6 (Notifications): alerts
 - Shared components (view layer): PageHeader, StatusBadge, ConfirmDialog, FormDialog, StatCard, DataTable, FilterBar, TimeGrid24hr
 - **2a Locations** (view layer): LocationsPage, LocationFormDialog — CRUD with mock data
 - **2b Charge Codes** (view layer): ChargeCodesPage, ChargeCodeFormDialog — CRUD with mock data
+- **2c Job Roles** (view layer): JobRolesPage, JobRoleFormDialog — CRUD + sortOrder reordering with Up/Down buttons
+- **2d Users** (view layer): UsersPage, UserFormDialog, UserProfilePage — CRUD + FilterBar + PIN + multi-location assignment
 
 ### Running the Project
 ```bash
@@ -323,8 +325,10 @@ frontend/src/
 │       └── navigation/  # Sidebar, NavigationTile, NavigationTiles
 └── modules/
     ├── home/          # Home page (tile mode + sidebar mode)
-    ├── locations/     # 2a — LocationsPage, LocationFormDialog (view layer)
-    └── chargeCodes/   # 2b — ChargeCodesPage, ChargeCodeFormDialog (view layer)
+    ├── locations/     # 2a — LocationsPage, LocationFormDialog (view layer ✅)
+    ├── chargeCodes/   # 2b — ChargeCodesPage, ChargeCodeFormDialog (view layer ✅)
+    ├── jobRoles/      # 2c — JobRolesPage, JobRoleFormDialog (view layer ✅)
+    └── users/         # 2d — UsersPage, UserFormDialog, UserProfilePage (view layer ✅)
 
 server/src/
 ├── config/           # Environment configuration
@@ -335,5 +339,7 @@ server/src/
 ---
 
 Last updated: 2026-03-13
-**Current Phase**: Phase 2 - Admin Setup (view layer)
-**Next step**: 2c Job Roles — same CRUD pattern + pay grade ordering + drag-to-reorder UI
+**Current strategy**: View layer first across ALL phases before any business logic or API wiring.
+**Phase 2 view layer**: ✅ Complete (Locations, Charge Codes, Job Roles, Users)
+**Next step**: Phase 4 view layer — User Shifts (4a) → Time Sessions (4b) → Overtime (4c)
+**Then**: Phase 5 view layer (Reporting) → Phase 6 (Alerts) → Phase 3 Auth views → API wiring pass

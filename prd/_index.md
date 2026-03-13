@@ -39,18 +39,18 @@ Timekeeping is an enterprise web application for field organizations to accurate
 |--------|------|-------|--------|-------------|
 | Locations | `modules/locations.md` | 2a | `view-complete` | — |
 | Charge Codes | `modules/charge-codes.md` | 2b | `view-complete` | — |
-| Job Roles | `modules/job-roles.md` | 2c | `planned` | — |
-| Users | `modules/users.md` | 2d | `planned` | locations, job-roles |
+| Job Roles | `modules/job-roles.md` | 2c | `view-complete` | — |
+| Users | `modules/users.md` | 2d | `view-complete` | locations, job-roles |
 | Auth | `modules/auth.md` | 3a | `planned` | users |
 | Navigation | `modules/navigation.md` | 3b | `in-progress` | auth |
-| User Shifts | `modules/user-shifts.md` | 4a | `planned` | users, job-roles, locations |
-| Time Sessions | `modules/time-sessions.md` | 4b | `planned` | users, charge-codes, job-roles, locations |
-| Overtime | `modules/overtime.md` | 4c | `planned` | time-sessions, charge-codes |
-| Time Sheets | `modules/time-sheets.md` | 5a | `planned` | time-sessions |
-| Overtime Requests | `modules/overtime-requests.md` | 5b | `planned` | overtime |
-| Employees | `modules/employees.md` | 5c | `planned` | users, time-sessions, overtime |
-| Summary Sheet | `modules/summary-sheet.md` | 5d | `planned` | time-sessions |
-| Alerts | `modules/alerts.md` | 6a | `planned` | time-sessions, overtime |
+| User Shifts | `modules/user-shifts.md` | 4a | `view-pending` | users, job-roles, locations |
+| Time Sessions | `modules/time-sessions.md` | 4b | `view-pending` | users, charge-codes, job-roles, locations |
+| Overtime | `modules/overtime.md` | 4c | `view-pending` | time-sessions, charge-codes |
+| Time Sheets | `modules/time-sheets.md` | 5a | `view-pending` | time-sessions |
+| Overtime Requests | `modules/overtime-requests.md` | 5b | `view-pending` | overtime |
+| Employees | `modules/employees.md` | 5c | `view-pending` | users, time-sessions, overtime |
+| Summary Sheet | `modules/summary-sheet.md` | 5d | `view-pending` | time-sessions |
+| Alerts | `modules/alerts.md` | 6a | `view-pending` | time-sessions, overtime |
 
 ## Build Order
 
@@ -58,8 +58,8 @@ Timekeeping is an enterprise web application for field organizations to accurate
 Reference data modules — CRUD patterns established here.
 - **2a** `locations` → Location CRUD ✅ view layer done
 - **2b** `charge-codes` → Charge code CRUD ✅ view layer done
-- **2c** `job-roles` → Job roles with pay grade ordering
-- **2d** `users` → User CRUD + profile + location/role assignment
+- **2c** `job-roles` → Job roles with pay grade ordering ✅ view layer done
+- **2d** `users` → User CRUD + profile + location/role assignment ✅ view layer done
 
 ### Phase 3: Auth & Navigation
 - **3a** `auth` → Login (email/password) + Field Mode (PIN entry). Depends: users
@@ -81,11 +81,19 @@ Reference data modules — CRUD patterns established here.
 
 ## Implementation Approach
 
-**Current strategy**: View layer first, no business logic yet. Mock/typed data passed as props. API wiring comes later.
+**Current strategy**: View layer first across ALL phases, no business logic yet. Mock/typed data passed as props. API wiring comes in a second pass once all views are reviewed and approved.
+
+**View layer status**:
+- ✅ Shared components (PageHeader, StatusBadge, ConfirmDialog, FormDialog, StatCard, DataTable, FilterBar, TimeGrid24hr)
+- ✅ Phase 2 Admin Setup (Locations, Charge Codes, Job Roles, Users + Profile)
+- 🔲 Phase 4 Core Timekeeping view layer (User Shifts, Time Sessions, Overtime) ← next
+- 🔲 Phase 5 Reporting view layer (Time Sheets, OT Requests, Employees, Summary Sheet)
+- 🔲 Phase 6 Notifications view layer (Alerts)
+- 🔲 Phase 3 Auth view layer (Login page, PIN entry) ← after all feature views
 
 **Build sequence within each phase**:
-1. Shared components first (`PageHeader`, `StatusBadge`, `ConfirmDialog`, `FormDialog`, `DataTable`) — all module pages depend on these
-2. Then module pages in phase order
+1. Shared components first — all module pages depend on these (done ✅)
+2. Then module pages in phase order (currently working through view layer for all phases)
 
 **Navigation**: `src/core/routing/navigationConfig.ts` is the single source of truth. Sidebar and tile view consume it automatically. To add a page: add entry to config + `<Route>` in `App.tsx`.
 
