@@ -46,7 +46,7 @@ Timekeeping is an enterprise web application for field organizations to accurate
 | User Shifts | `modules/user-shifts.md` | 4a | `view-complete` | users, job-roles, locations |
 | Time Sessions | `modules/time-sessions.md` | 4b | `view-complete` | users, charge-codes, job-roles, locations |
 | Overtime | `modules/overtime.md` | 4c | `view-complete` | time-sessions, charge-codes |
-| Time Sheets | `modules/time-sheets.md` | 5a | `view-pending` | time-sessions |
+| Time Sheets | `modules/time-sheets.md` | 5a | `view-complete` | time-sessions |
 | Overtime Requests | `modules/overtime-requests.md` | 5b | `view-pending` | overtime |
 | Employees | `modules/employees.md` | 5c | `view-pending` | users, time-sessions, overtime |
 | Summary Sheet | `modules/summary-sheet.md` | 5d | `view-pending` | time-sessions |
