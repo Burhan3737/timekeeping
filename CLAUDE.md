@@ -67,6 +67,7 @@ Sidebar and tile navigation update automatically. Do NOT hardcode nav items in `
 - When in plan mode, explain your solution thoroughly and ask follow-up questions
 - When in plan mode, mention all file changes so the engineer can review before implementation
 - Recurrent rules defined by the user in prompts should be added to this Rules section
+- After completing each module, always update `prd/_index.md` (module status + build order ✅ marker) and `CLAUDE.md` (implemented list + file structure + next step) before moving on
 - Use the frontend-design skill when creating view components
 - Use any other skill to improve productivity
 - Store core context in CLAUDE.md/AGENTS.md so each new agent session has full context; keep it concise to minimize token usage
