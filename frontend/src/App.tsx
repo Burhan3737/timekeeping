@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { MainLayout } from '@shared/components/layout/MainLayout'
 import { HomePage } from '@modules/home/components/HomePage'
+import { LocationsPage } from '@modules/locations'
 import { ThemeProvider } from '@core/theme'
 
 // Placeholder for unbuilt pages — replace with real component imports as modules are built
@@ -37,7 +38,7 @@ function App() {
           <Route path="/setup/users" element={<ComingSoon title="Users" />} />
           <Route path="/setup/job-roles" element={<ComingSoon title="Job Roles" />} />
           <Route path="/setup/charge-codes" element={<ComingSoon title="Charge Codes" />} />
-          <Route path="/setup/locations" element={<ComingSoon title="Locations" />} />
+          <Route path="/setup/locations" element={<LocationsPage />} />
           <Route path="/setup/user-shifts" element={<ComingSoon title="User Shifts" />} />
         </Routes>
       </MainLayout>
