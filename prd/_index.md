@@ -44,7 +44,7 @@ Timekeeping is an enterprise web application for field organizations to accurate
 | Auth | `modules/auth.md` | 3a | `planned` | users |
 | Navigation | `modules/navigation.md` | 3b | `in-progress` | auth |
 | User Shifts | `modules/user-shifts.md` | 4a | `view-complete` | users, job-roles, locations |
-| Time Sessions | `modules/time-sessions.md` | 4b | `view-pending` | users, charge-codes, job-roles, locations |
+| Time Sessions | `modules/time-sessions.md` | 4b | `view-complete` | users, charge-codes, job-roles, locations |
 | Overtime | `modules/overtime.md` | 4c | `view-pending` | time-sessions, charge-codes |
 | Time Sheets | `modules/time-sheets.md` | 5a | `view-pending` | time-sessions |
 | Overtime Requests | `modules/overtime-requests.md` | 5b | `view-pending` | overtime |
@@ -67,7 +67,7 @@ Reference data modules — CRUD patterns established here.
 
 ### Phase 4: Core Timekeeping
 - **4a** `user-shifts` → Shift definitions per employee ✅ view layer done
-- **4b** `time-sessions` → Daily time entry (central feature). Depends: users, charge-codes, job-roles, locations
+- **4b** `time-sessions` → Daily time entry (central feature) ✅ view layer done
 - **4c** `overtime` → Overtime request + threshold detection. Depends: time-sessions, charge-codes
 
 ### Phase 5: Reporting & Supervision

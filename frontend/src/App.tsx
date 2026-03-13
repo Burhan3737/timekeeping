@@ -6,6 +6,7 @@ import { ChargeCodesPage } from '@modules/chargeCodes'
 import { JobRolesPage } from '@modules/jobRoles'
 import { UsersPage, UserProfilePage } from '@modules/users'
 import { UserShiftsPage } from '@modules/userShifts'
+import { TimeSessionsPage, SessionHistoryPage } from '@modules/timeSessions'
 import { ThemeProvider } from '@core/theme'
 
 // Placeholder for unbuilt pages — replace with real component imports as modules are built
@@ -28,7 +29,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
 
           {/* Time Keeping */}
-          <Route path="/time-sessions" element={<ComingSoon title="Time Sessions" />} />
+          <Route path="/time-sessions" element={<TimeSessionsPage />} />
+          <Route path="/time-sessions/history" element={<SessionHistoryPage />} />
           <Route path="/overtime" element={<ComingSoon title="Overtime" />} />
 
           {/* Reporting */}
