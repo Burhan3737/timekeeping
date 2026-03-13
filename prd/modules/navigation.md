@@ -55,7 +55,7 @@ Restructure the existing sidebar navigation into three sections matching the wir
 - Role-based visibility: Setup section only for ADMIN
 - Reporting section hidden in Field Mode
 
-### Routes — No new routes. Existing route config updated to include `section` and `requiredRole` metadata.
+### Routes — No new routes. Route metadata (`section`, `requiredRole`) lives in `src/core/routing/navigationConfig.ts` — the single source of truth for all nav items. Sidebar and NavigationTiles both consume this config.
 
 ## Business Logic
 
@@ -68,10 +68,10 @@ Restructure the existing sidebar navigation into three sections matching the wir
 
 ## Acceptance Criteria
 
-- [ ] Sidebar shows three distinct sections with headers
-- [ ] Setup section visible only to ADMIN role
-- [ ] Field Mode toggle visible to supervisors and admins
-- [ ] Field Mode toggle hides Reporting and Setup sections
-- [ ] Active route is visually highlighted
+- [x] Sidebar shows three distinct sections with headers
+- [ ] Setup section visible only to ADMIN role *(Phase 3 — needs auth)*
+- [ ] Field Mode toggle visible to supervisors and admins *(Phase 3 — needs auth)*
+- [ ] Field Mode toggle hides Reporting and Setup sections *(Phase 3 — needs auth)*
+- [x] Active route is visually highlighted
 - [ ] Sidebar collapses responsively on mobile
-- [ ] Theme-consistent styling (Chronos Indigo)
+- [x] Theme-consistent styling (Chronos Indigo)

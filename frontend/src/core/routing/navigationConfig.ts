@@ -12,6 +12,12 @@ import CodeIcon from '@mui/icons-material/Code'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import ScheduleIcon from '@mui/icons-material/Schedule'
 
+/**
+ * System roles that map to the backend SystemRole enum.
+ * Used for role-based nav visibility (Phase 3 — auth).
+ */
+export type SystemRole = 'FIELD_WORKER' | 'SUPERVISOR' | 'ADMIN' | 'DATA_ENTRY_CLERK'
+
 export interface NavItem {
   /** Display label in sidebar and tile view */
   label: string
@@ -23,6 +29,12 @@ export interface NavItem {
   description: string
   /** MUI palette path for accent color, e.g. 'primary.main' */
   color: string
+  /**
+   * Minimum role required to see this item.
+   * Omit to show to all authenticated users.
+   * Enforced in Phase 3 once auth is wired up.
+   */
+  requiredRole?: SystemRole
 }
 
 export interface NavSection {
@@ -106,6 +118,7 @@ export const navigationConfig: NavSection[] = [
         icon: ManageAccountsIcon,
         description: 'User accounts, roles, and locations',
         color: 'secondary.main',
+        requiredRole: 'ADMIN',
       },
       {
         label: 'Job Roles',
@@ -113,6 +126,7 @@ export const navigationConfig: NavSection[] = [
         icon: WorkIcon,
         description: 'Pay grades and role ordering',
         color: 'info.main',
+        requiredRole: 'ADMIN',
       },
       {
         label: 'Charge Codes',
@@ -120,6 +134,7 @@ export const navigationConfig: NavSection[] = [
         icon: CodeIcon,
         description: 'Billing and charge code management',
         color: 'warning.main',
+        requiredRole: 'ADMIN',
       },
       {
         label: 'Locations',
@@ -127,6 +142,7 @@ export const navigationConfig: NavSection[] = [
         icon: LocationOnIcon,
         description: 'Work site locations',
         color: 'success.main',
+        requiredRole: 'ADMIN',
       },
       {
         label: 'User Shifts',
@@ -134,6 +150,7 @@ export const navigationConfig: NavSection[] = [
         icon: ScheduleIcon,
         description: 'Shift definitions per employee',
         color: 'primary.main',
+        requiredRole: 'ADMIN',
       },
     ],
   },

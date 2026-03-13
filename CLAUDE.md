@@ -40,6 +40,18 @@ const { toggleTheme } = useAppActions()
 - `src/shared/components/${reusableComponent}` — Reusable components used throughout the app
 - `src/shared/utils/${utilsFolder or fileName}` — Shared utility functions (dateUtils, formatters, etc.)
 
+## Navigation — Adding a New Page
+
+**Single source of truth**: `src/core/routing/navigationConfig.ts`
+
+To add a new page to the app:
+1. Add a `NavItem` entry to `navigationConfig.ts` (label, path, icon, description, color, optional `requiredRole`)
+2. Add a `<Route>` in `App.tsx` mapping the path to the page component
+
+Sidebar and tile navigation update automatically. Do NOT hardcode nav items in `Sidebar.tsx` or `NavigationTiles.tsx`.
+
+`requiredRole` values: `'ADMIN'` | `'SUPERVISOR'` | `'FIELD_WORKER'` | `'DATA_ENTRY_CLERK'` — omit to show to all authenticated users. Role filtering is enforced in Phase 3 (auth module).
+
 ## Rules
 
 - Always use MUI for creating components
@@ -279,6 +291,9 @@ Phase 6 (Notifications): alerts
 - TypeScript configured for both frontend and server
 - Path aliases for clean imports (`@/`, `@core/`, etc.)
 - PRD documentation structure (all 14 module PRDs + foundation docs)
+- Navigation config (`src/core/routing/navigationConfig.ts`) — single source of truth for all nav items
+- Sidebar: 3-section structure (Time Keeping / Reporting / Setup), collapsible, active state highlighting
+- All routes registered in `App.tsx` (placeholders for unbuilt modules)
 
 ### Running the Project
 ```bash
@@ -295,12 +310,16 @@ cd server && npm run dev      # Server on http://localhost:3001
 frontend/src/
 ├── core/
 │   ├── api/           # API client with CRUD methods
-│   ├── state/         # Global Zustand store (theme, sidebar)
-│   └── routing/       # Route configuration
+│   ├── state/         # Global Zustand store (theme, sidebar, navigationMode)
+│   └── routing/
+│       ├── navigationConfig.ts  # ← Single source of truth for all nav items
+│       └── routes.ts            # Route-to-component mapping (App.tsx)
 ├── shared/
-│   └── components/    # MainLayout with nav and footer
+│   └── components/
+│       ├── layout/    # MainLayout (AppBar + Sidebar/Tiles + Footer)
+│       └── navigation/  # Sidebar, NavigationTile, NavigationTiles
 └── modules/
-    └── home/          # Home page with feature cards
+    └── home/          # Home page (tile mode + sidebar mode)
 
 server/src/
 ├── config/           # Environment configuration
@@ -310,5 +329,6 @@ server/src/
 
 ---
 
-Last updated: 2026-03-12
-**Current Phase**: Phase 2 - Admin Setup (next: implement locations module)
+Last updated: 2026-03-13
+**Current Phase**: Phase 2 - Admin Setup
+**Next step**: Build shared components (PageHeader, StatusBadge, ConfirmDialog, FormDialog, DataTable) — required by all module pages

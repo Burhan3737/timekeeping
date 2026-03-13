@@ -42,7 +42,7 @@ Timekeeping is an enterprise web application for field organizations to accurate
 | Job Roles | `modules/job-roles.md` | 2c | `planned` | — |
 | Users | `modules/users.md` | 2d | `planned` | locations, job-roles |
 | Auth | `modules/auth.md` | 3a | `planned` | users |
-| Navigation | `modules/navigation.md` | 3b | `planned` | auth |
+| Navigation | `modules/navigation.md` | 3b | `in-progress` | auth |
 | User Shifts | `modules/user-shifts.md` | 4a | `planned` | users, job-roles, locations |
 | Time Sessions | `modules/time-sessions.md` | 4b | `planned` | users, charge-codes, job-roles, locations |
 | Overtime | `modules/overtime.md` | 4c | `planned` | time-sessions, charge-codes |
@@ -63,7 +63,7 @@ Reference data modules — CRUD patterns established here.
 
 ### Phase 3: Auth & Navigation
 - **3a** `auth` → Login (email/password) + Field Mode (PIN entry). Depends: users
-- **3b** `navigation` → Sidebar restructure (3 sections) + Field Mode toggle. Depends: auth
+- **3b** `navigation` → ~~Sidebar restructure (3 sections)~~ ✅ done early + Field Mode toggle (pending auth). Depends: auth
 
 ### Phase 4: Core Timekeeping
 - **4a** `user-shifts` → Shift definitions per employee. Depends: users, job-roles, locations
@@ -78,6 +78,16 @@ Reference data modules — CRUD patterns established here.
 
 ### Phase 6: Notifications
 - **6a** `alerts` → Alert rules + notification display. Depends: time-sessions, overtime
+
+## Implementation Approach
+
+**Current strategy**: View layer first, no business logic yet. Mock/typed data passed as props. API wiring comes later.
+
+**Build sequence within each phase**:
+1. Shared components first (`PageHeader`, `StatusBadge`, `ConfirmDialog`, `FormDialog`, `DataTable`) — all module pages depend on these
+2. Then module pages in phase order
+
+**Navigation**: `src/core/routing/navigationConfig.ts` is the single source of truth. Sidebar and tile view consume it automatically. To add a page: add entry to config + `<Route>` in `App.tsx`.
 
 ## Foundation References
 
