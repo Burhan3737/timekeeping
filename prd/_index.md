@@ -37,8 +37,8 @@ Timekeeping is an enterprise web application for field organizations to accurate
 
 | Module | File | Phase | Status | Dependencies |
 |--------|------|-------|--------|-------------|
-| Locations | `modules/locations.md` | 2a | `planned` | — |
-| Charge Codes | `modules/charge-codes.md` | 2b | `planned` | — |
+| Locations | `modules/locations.md` | 2a | `view-complete` | — |
+| Charge Codes | `modules/charge-codes.md` | 2b | `view-complete` | — |
 | Job Roles | `modules/job-roles.md` | 2c | `planned` | — |
 | Users | `modules/users.md` | 2d | `planned` | locations, job-roles |
 | Auth | `modules/auth.md` | 3a | `planned` | users |
@@ -56,8 +56,8 @@ Timekeeping is an enterprise web application for field organizations to accurate
 
 ### Phase 2: Admin Setup (no dependencies)
 Reference data modules — CRUD patterns established here.
-- **2a** `locations` → Location CRUD
-- **2b** `charge-codes` → Charge code CRUD
+- **2a** `locations` → Location CRUD ✅ view layer done
+- **2b** `charge-codes` → Charge code CRUD ✅ view layer done
 - **2c** `job-roles` → Job roles with pay grade ordering
 - **2d** `users` → User CRUD + profile + location/role assignment
 

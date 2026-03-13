@@ -294,6 +294,9 @@ Phase 6 (Notifications): alerts
 - Navigation config (`src/core/routing/navigationConfig.ts`) — single source of truth for all nav items
 - Sidebar: 3-section structure (Time Keeping / Reporting / Setup), collapsible, active state highlighting
 - All routes registered in `App.tsx` (placeholders for unbuilt modules)
+- Shared components (view layer): PageHeader, StatusBadge, ConfirmDialog, FormDialog, StatCard, DataTable, FilterBar, TimeGrid24hr
+- **2a Locations** (view layer): LocationsPage, LocationFormDialog — CRUD with mock data
+- **2b Charge Codes** (view layer): ChargeCodesPage, ChargeCodeFormDialog — CRUD with mock data
 
 ### Running the Project
 ```bash
@@ -319,7 +322,9 @@ frontend/src/
 │       ├── layout/    # MainLayout (AppBar + Sidebar/Tiles + Footer)
 │       └── navigation/  # Sidebar, NavigationTile, NavigationTiles
 └── modules/
-    └── home/          # Home page (tile mode + sidebar mode)
+    ├── home/          # Home page (tile mode + sidebar mode)
+    ├── locations/     # 2a — LocationsPage, LocationFormDialog (view layer)
+    └── chargeCodes/   # 2b — ChargeCodesPage, ChargeCodeFormDialog (view layer)
 
 server/src/
 ├── config/           # Environment configuration
@@ -330,5 +335,5 @@ server/src/
 ---
 
 Last updated: 2026-03-13
-**Current Phase**: Phase 2 - Admin Setup
-**Next step**: Build shared components (PageHeader, StatusBadge, ConfirmDialog, FormDialog, DataTable) — required by all module pages
+**Current Phase**: Phase 2 - Admin Setup (view layer)
+**Next step**: 2c Job Roles — same CRUD pattern + pay grade ordering + drag-to-reorder UI
