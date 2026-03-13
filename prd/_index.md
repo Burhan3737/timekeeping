@@ -45,7 +45,7 @@ Timekeeping is an enterprise web application for field organizations to accurate
 | Navigation | `modules/navigation.md` | 3b | `in-progress` | auth |
 | User Shifts | `modules/user-shifts.md` | 4a | `view-complete` | users, job-roles, locations |
 | Time Sessions | `modules/time-sessions.md` | 4b | `view-complete` | users, charge-codes, job-roles, locations |
-| Overtime | `modules/overtime.md` | 4c | `view-pending` | time-sessions, charge-codes |
+| Overtime | `modules/overtime.md` | 4c | `view-complete` | time-sessions, charge-codes |
 | Time Sheets | `modules/time-sheets.md` | 5a | `view-pending` | time-sessions |
 | Overtime Requests | `modules/overtime-requests.md` | 5b | `view-pending` | overtime |
 | Employees | `modules/employees.md` | 5c | `view-pending` | users, time-sessions, overtime |
@@ -68,7 +68,7 @@ Reference data modules — CRUD patterns established here.
 ### Phase 4: Core Timekeeping
 - **4a** `user-shifts` → Shift definitions per employee ✅ view layer done
 - **4b** `time-sessions` → Daily time entry (central feature) ✅ view layer done
-- **4c** `overtime` → Overtime request + threshold detection. Depends: time-sessions, charge-codes
+- **4c** `overtime` → Overtime request + threshold detection. Depends: time-sessions, charge-codes ✅ view layer done
 
 ### Phase 5: Reporting & Supervision
 - **5a** `time-sheets` → Supervisor 24hr grid review. Depends: time-sessions
@@ -86,8 +86,8 @@ Reference data modules — CRUD patterns established here.
 **View layer status**:
 - ✅ Shared components (PageHeader, StatusBadge, ConfirmDialog, FormDialog, StatCard, DataTable, FilterBar, TimeGrid24hr)
 - ✅ Phase 2 Admin Setup (Locations, Charge Codes, Job Roles, Users + Profile)
-- 🔲 Phase 4 Core Timekeeping view layer (User Shifts, Time Sessions, Overtime) ← next
-- 🔲 Phase 5 Reporting view layer (Time Sheets, OT Requests, Employees, Summary Sheet)
+- ✅ Phase 4 Core Timekeeping view layer (User Shifts, Time Sessions, Overtime)
+- 🔲 Phase 5 Reporting view layer (Time Sheets, OT Requests, Employees, Summary Sheet) ← next
 - 🔲 Phase 6 Notifications view layer (Alerts)
 - 🔲 Phase 3 Auth view layer (Login page, PIN entry) ← after all feature views
 

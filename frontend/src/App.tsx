@@ -7,6 +7,7 @@ import { JobRolesPage } from '@modules/jobRoles'
 import { UsersPage, UserProfilePage } from '@modules/users'
 import { UserShiftsPage } from '@modules/userShifts'
 import { TimeSessionsPage, SessionHistoryPage } from '@modules/timeSessions'
+import { OvertimePage } from '@modules/overtime'
 import { ThemeProvider } from '@core/theme'
 
 // Placeholder for unbuilt pages — replace with real component imports as modules are built
@@ -31,7 +32,7 @@ function App() {
           {/* Time Keeping */}
           <Route path="/time-sessions" element={<TimeSessionsPage />} />
           <Route path="/time-sessions/history" element={<SessionHistoryPage />} />
-          <Route path="/overtime" element={<ComingSoon title="Overtime" />} />
+          <Route path="/overtime" element={<OvertimePage />} />
 
           {/* Reporting */}
           <Route path="/reporting/time-sheets" element={<ComingSoon title="Time Sheets" />} />
