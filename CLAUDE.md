@@ -303,6 +303,7 @@ Phase 6 (Notifications): alerts
 - **4a User Shifts** (view layer): UserShiftsPage, ShiftFormDialog — weekly TimeGrid24hr per day, employee selector, shift chips
 - **4b Time Sessions** (view layer): TimeSessionsPage, TimeEntryList, TimeEntryFormDialog, SessionHistoryPage — StatCards, entry CRUD, submit flow, history with filters
 - **4c Overtime** (view layer): OvertimePage, OvertimeRequestFormDialog — StatCards, tabs (pending/history), request CRUD, cancel flow, threshold alerts
+- **5a Time Sheets** (view layer): TimeSheetsPage, EmployeeTimeCard, EntryEditDialog — date/location filter, TimeGrid24hr per employee, approve/reject/bulk-approve, supervisor entry edit with audit note
 
 ### Running the Project
 ```bash
@@ -335,7 +336,8 @@ frontend/src/
     ├── users/         # 2d — UsersPage, UserFormDialog, UserProfilePage (view layer ✅)
     ├── userShifts/    # 4a — UserShiftsPage, ShiftFormDialog (view layer ✅)
     ├── timeSessions/  # 4b — TimeSessionsPage, TimeEntryList, TimeEntryFormDialog, SessionHistoryPage (view layer ✅)
-    └── overtime/      # 4c — OvertimePage, OvertimeRequestFormDialog (view layer ✅)
+    ├── overtime/      # 4c — OvertimePage, OvertimeRequestFormDialog (view layer ✅)
+    └── timeSheets/    # 5a — TimeSheetsPage, EmployeeTimeCard, EntryEditDialog (view layer ✅)
 
 server/src/
 ├── config/           # Environment configuration
@@ -349,5 +351,5 @@ Last updated: 2026-03-13
 **Current strategy**: View layer first across ALL phases before any business logic or API wiring.
 **Phase 2 view layer**: ✅ Complete (Locations, Charge Codes, Job Roles, Users)
 **Phase 4 view layer**: ✅ Complete (User Shifts, Time Sessions, Overtime)
-**Next step**: Phase 5 view layer — Time Sheets (5a)
+**Next step**: Phase 5 view layer — Overtime Requests (5b)
 **Then**: OT Requests (5b) → Employees (5c) → Summary Sheet (5d) → Phase 6 (Alerts) → Phase 3 Auth views → API wiring pass
