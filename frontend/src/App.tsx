@@ -4,6 +4,7 @@ import { HomePage } from '@modules/home/components/HomePage'
 import { LocationsPage } from '@modules/locations'
 import { ChargeCodesPage } from '@modules/chargeCodes'
 import { JobRolesPage } from '@modules/jobRoles'
+import { UsersPage, UserProfilePage } from '@modules/users'
 import { ThemeProvider } from '@core/theme'
 
 // Placeholder for unbuilt pages — replace with real component imports as modules are built
@@ -37,7 +38,8 @@ function App() {
           <Route path="/reporting/alerts" element={<ComingSoon title="Alerts" />} />
 
           {/* Setup */}
-          <Route path="/setup/users" element={<ComingSoon title="Users" />} />
+          <Route path="/setup/users" element={<UsersPage />} />
+          <Route path="/profile" element={<UserProfilePage />} />
           <Route path="/setup/job-roles" element={<JobRolesPage />} />
           <Route path="/setup/charge-codes" element={<ChargeCodesPage />} />
           <Route path="/setup/locations" element={<LocationsPage />} />
