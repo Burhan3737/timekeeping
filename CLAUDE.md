@@ -2,32 +2,62 @@
 
 ## Project Knowledge
 Tech Stack: React, Typescript, MUI
-File Structure/ Architecture:
-src/modules/${moduleName}/index.tsx: contains the business logic of the module and handling of module state and side effects (apis etc)
-src/modules/${moduleName}/types.ts: contains the interfaces, types to be defined for the module
-src/modules/${moduleName}/${moduleNameView}.tsx: view layer of the module, only view related state might be managed here. Can be multiple
-src/modules/${moduleName}/utils.tsx: utility functions for the module (only module related logic). Would mostly be imported in the index.js file of the project
-src/logic/${logicModuleName.ts}: App specific business logic, rules and core calculations would be written here. It can be used in multiple modules through out the app.
-src/shared/components/${reusableComponent}: reusable components which can be used throughout the app will be stored here
-src/shared/utils/${utilsFolder or fileName}: shared utility functions/files that can be used through out the app will be stored here (dateUtils, formatters etc)
+
+## Theme System
+
+The app uses a custom **"Chronos Indigo"** theme — deep indigo primary (#4f46e5), teal secondary (#14b8a6).
+
+### Theme Documentation
+See `prd/ui/themes.md` for complete documentation including:
+- Typography (Playfair Display + Inter + JetBrains Mono)
+- Color palette (indigo primary, teal secondary, slate neutrals)
+- Custom palette extensions (`chronos.*`, `time.*`)
+- Component styling patterns
+
+### Quick Reference
+```tsx
+import { useTheme, useAppActions } from '@core/state/appStore'
+
+const currentTheme = useTheme() // 'light' | 'dark'
+const { toggleTheme } = useAppActions()
+
+// Access theme colors
+<Typography sx={{ color: 'chronos.indigo' }} />
+<Box sx={{ bgcolor: 'time.running' }} />
+```
+
+### Key Files
+- `frontend/src/core/theme/themeConfig.ts` - Theme configuration
+- `frontend/src/core/theme/ThemeProvider.tsx` - Theme provider
+
+## File Structure / Architecture
+
+- `src/modules/${moduleName}/index.tsx` — Business logic, module state, and side effects (APIs etc.)
+- `src/modules/${moduleName}/types.ts` — Interfaces and types for the module
+- `src/modules/${moduleName}/${moduleNameView}.tsx` — View layer (only view-related state). Can be multiple files.
+- `src/modules/${moduleName}/utils.tsx` — Module-specific utility functions
+- `src/logic/${logicModuleName}.ts` — App-wide business logic, rules, and core calculations (used across modules)
+- `src/shared/components/${reusableComponent}` — Reusable components used throughout the app
+- `src/shared/utils/${utilsFolder or fileName}` — Shared utility functions (dateUtils, formatters, etc.)
 
 ## Rules
-Always remember to use MUI for creating components.
-Make sure to keep the UI and theming consistent (you can lookup the ThemeContext for it)
-Always follow the defined file/folder structure
-Try to make reusable view components (where applicable) which are always consistent with the theme of the the app (buttons) and store them at shared/components/${reusableComponent}
-For view layer changes always recommend reusable components stored at shared/components/${reusableComponent} if applicable
-Utility functions that you think might be generic and can be used throughout the app (i.e dateUtils) must be stored at shared/utils/${utilsFolder or fileName}
-Write as minimal code as possible and DRY!
-No fancy architecture that confuses new developers.
-You need to to follow the defined folder/file structure.
-The src/context folder consists of all the states that need to persist globally throughout the app. So you need to use them if when required rather than creating new ones.
-When in plan mode, always explain your solution thoroughly and ask follow up questions to explain your plan.
-When in plan mode, mention all changes required to the files so the human engineer can review them before you actually implement them.
-Any rules that are recurrent and defined by the user in the prompts needs to be added into the CLAUDE.md file under the rules section.
-Specifically use the frontend-design skill while creating view components
-Use any other skill to improve your productivity.
-As the project will start to expand we need to store the core context in CLAUDE.md/AGENTS.md so each new agent session has all the context. Be sure to keep it concise and compact so it does not consume a lot of tokens
+
+- Always use MUI for creating components
+- Keep the UI and theming consistent (reference the ThemeProvider for tokens)
+- Always follow the defined file/folder structure
+- Make reusable view components (where applicable) consistent with the app theme, stored at `shared/components/${reusableComponent}`
+- For view layer changes, recommend reusable components from `shared/components/` if applicable
+- Generic utility functions (e.g., dateUtils) must be stored at `shared/utils/${utilsFolder or fileName}`
+- Write as minimal code as possible and DRY
+- No fancy architecture that confuses new developers
+- Follow the defined folder/file structure
+- The `src/context` folder holds globally persistent state — use existing stores rather than creating new ones
+- When in plan mode, explain your solution thoroughly and ask follow-up questions
+- When in plan mode, mention all file changes so the engineer can review before implementation
+- Recurrent rules defined by the user in prompts should be added to this Rules section
+- Use the frontend-design skill when creating view components
+- Use any other skill to improve productivity
+- Store core context in CLAUDE.md/AGENTS.md so each new agent session has full context; keep it concise to minimize token usage
 
 ## Project Overview
 
@@ -219,9 +249,26 @@ Located in `core/api/`:
 - Error handling
 - Type-safe endpoints
 
+## PRD Documentation
+
+All feature requirements are documented in `prd/`:
+- **`prd/_index.md`** — Master index: build order, dependency graph, module registry
+- **`prd/_data-models.md`** — All entity TypeScript interfaces & relationships (single source of truth)
+- **`prd/_shared-components.md`** — Reusable component specs (DataTable, FormDialog, TimeGrid24hr, etc.)
+- **`prd/_shared-utilities.md`** — Shared utils & business logic specs
+- **`prd/modules/`** — Individual module PRDs (14 modules, Phases 2–6)
+
+### Build Order
+Phase 2 (Admin Setup): locations → charge-codes → job-roles → users
+Phase 3 (Auth & Nav): auth → navigation
+Phase 4 (Core): user-shifts → time-sessions → overtime
+Phase 5 (Reporting): time-sheets → overtime-requests → employees → summary-sheet
+Phase 6 (Notifications): alerts
+
 ## Current Project Status
 
-**Phase**: 1 - Baseline Structure (Complete ✅)
+**Phase 1**: Baseline Structure (Complete ✅)
+**Phase 2**: Admin Setup (In Progress)
 
 ### What's Implemented
 - npm workspaces with frontend and server packages
@@ -231,6 +278,7 @@ Located in `core/api/`:
 - Home page with navigation layout
 - TypeScript configured for both frontend and server
 - Path aliases for clean imports (`@/`, `@core/`, etc.)
+- PRD documentation structure (all 14 module PRDs + foundation docs)
 
 ### Running the Project
 ```bash
@@ -263,4 +311,4 @@ server/src/
 ---
 
 Last updated: 2026-03-12
-**Current Phase**: Phase 2 - View Layer (in progress)
+**Current Phase**: Phase 2 - Admin Setup (next: implement locations module)

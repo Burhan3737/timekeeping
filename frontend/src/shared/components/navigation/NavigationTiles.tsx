@@ -10,21 +10,21 @@ const navigationItems = [
     title: 'Dashboard',
     description: 'View your timekeeping overview and quick stats',
     to: '/',
-    color: '#2563eb',
+    color: 'primary',
   },
   {
     icon: <AccessTimeIcon sx={{ fontSize: 48 }} />,
     title: 'Time Entries',
     description: 'Log and manage your work hours efficiently',
     to: '/time-entries',
-    color: '#22c55e',
+    color: 'secondary',
   },
   {
     icon: <AssessmentIcon sx={{ fontSize: 48 }} />,
     title: 'Reports',
     description: 'Generate detailed reports and insights',
     to: '/reports',
-    color: '#f59e0b',
+    color: 'info',
   },
 ]
 

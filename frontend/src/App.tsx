@@ -1,31 +1,11 @@
 import { Routes, Route } from 'react-router-dom'
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import { MainLayout } from '@shared/components/layout/MainLayout'
 import { HomePage } from '@modules/home/components/HomePage'
-import { useTheme } from '@core/state/appStore'
+import { ThemeProvider } from '@core/theme'
 
 function App() {
-  const currentTheme = useTheme()
-
-  const theme = createTheme({
-    palette: {
-      mode: currentTheme,
-      primary: {
-        main: '#2563eb',
-      },
-      secondary: {
-        main: '#64748b',
-      },
-      background: {
-        default: currentTheme === 'light' ? '#f8fafc' : '#0f172a',
-        paper: currentTheme === 'light' ? '#ffffff' : '#1e293b',
-      },
-    },
-  })
-
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <ThemeProvider>
       <MainLayout>
         <Routes>
           <Route path="/" element={<HomePage />} />

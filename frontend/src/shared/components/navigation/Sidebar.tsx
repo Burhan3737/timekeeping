@@ -49,13 +49,17 @@ export function Sidebar() {
       }}
     >
       <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        {/* AppBar spacer */}
+        <Box sx={{ minHeight: 64 }} />
+
         <Box
           sx={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: collapsed ? 'center' : 'flex-end',
             p: 1,
-            minHeight: 64,
+            borderBottom: 1,
+            borderColor: 'divider',
           }}
         >
           <IconButton onClick={toggleSidebar}>
@@ -73,14 +77,11 @@ export function Sidebar() {
                 <ListItemButton
                   component={Link}
                   to={item.to}
+                  selected={isActive}
                   sx={{
                     minHeight: 48,
                     justifyContent: collapsed ? 'center' : 'initial',
                     px: collapsed ? 2 : 3,
-                    bgcolor: isActive ? 'action.selected' : 'transparent',
-                    '&:hover': {
-                      bgcolor: isActive ? 'action.selected' : 'action.hover',
-                    },
                   }}
                 >
                   <ListItemIcon
