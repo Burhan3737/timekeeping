@@ -299,6 +299,7 @@ Phase 6 (Notifications): alerts
 - **2b Charge Codes** (view layer): ChargeCodesPage, ChargeCodeFormDialog — CRUD with mock data
 - **2c Job Roles** (view layer): JobRolesPage, JobRoleFormDialog — CRUD + sortOrder reordering with Up/Down buttons
 - **2d Users** (view layer): UsersPage, UserFormDialog, UserProfilePage — CRUD + FilterBar + PIN + multi-location assignment
+- **4a User Shifts** (view layer): UserShiftsPage, ShiftFormDialog — weekly TimeGrid24hr per day, employee selector, shift chips
 
 ### Running the Project
 ```bash
@@ -328,7 +329,8 @@ frontend/src/
     ├── locations/     # 2a — LocationsPage, LocationFormDialog (view layer ✅)
     ├── chargeCodes/   # 2b — ChargeCodesPage, ChargeCodeFormDialog (view layer ✅)
     ├── jobRoles/      # 2c — JobRolesPage, JobRoleFormDialog (view layer ✅)
-    └── users/         # 2d — UsersPage, UserFormDialog, UserProfilePage (view layer ✅)
+    ├── users/         # 2d — UsersPage, UserFormDialog, UserProfilePage (view layer ✅)
+    └── userShifts/    # 4a — UserShiftsPage, ShiftFormDialog (view layer ✅)
 
 server/src/
 ├── config/           # Environment configuration
@@ -341,5 +343,5 @@ server/src/
 Last updated: 2026-03-13
 **Current strategy**: View layer first across ALL phases before any business logic or API wiring.
 **Phase 2 view layer**: ✅ Complete (Locations, Charge Codes, Job Roles, Users)
-**Next step**: Phase 4 view layer — User Shifts (4a) → Time Sessions (4b) → Overtime (4c)
+**Next step**: Phase 4 view layer — Time Sessions (4b) → Overtime (4c)
 **Then**: Phase 5 view layer (Reporting) → Phase 6 (Alerts) → Phase 3 Auth views → API wiring pass

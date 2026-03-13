@@ -5,6 +5,7 @@ import { LocationsPage } from '@modules/locations'
 import { ChargeCodesPage } from '@modules/chargeCodes'
 import { JobRolesPage } from '@modules/jobRoles'
 import { UsersPage, UserProfilePage } from '@modules/users'
+import { UserShiftsPage } from '@modules/userShifts'
 import { ThemeProvider } from '@core/theme'
 
 // Placeholder for unbuilt pages — replace with real component imports as modules are built
@@ -43,7 +44,7 @@ function App() {
           <Route path="/setup/job-roles" element={<JobRolesPage />} />
           <Route path="/setup/charge-codes" element={<ChargeCodesPage />} />
           <Route path="/setup/locations" element={<LocationsPage />} />
-          <Route path="/setup/user-shifts" element={<ComingSoon title="User Shifts" />} />
+          <Route path="/setup/user-shifts" element={<UserShiftsPage />} />
         </Routes>
       </MainLayout>
     </ThemeProvider>
