@@ -21,7 +21,7 @@ interface AppState {
 export const useAppStore = create<AppState>()((set, get) => ({
   theme: 'light',
   sidebarCollapsed: false,
-  navigationMode: 'tiles',
+  navigationMode: 'sidebar',
 
   actions: {
     toggleTheme: () => {

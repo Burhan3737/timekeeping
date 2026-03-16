@@ -50,7 +50,7 @@ Timekeeping is an enterprise web application for field organizations to accurate
 | Overtime Requests | `modules/overtime-requests.md` | 5b | `view-complete` | overtime |
 | Employees | `modules/employees.md` | 5c | `view-complete` | users, time-sessions, overtime |
 | Summary Sheet | `modules/summary-sheet.md` | 5d | `view-complete` | time-sessions |
-| Alerts | `modules/alerts.md` | 6a | `view-pending` | time-sessions, overtime |
+| Alerts | `modules/alerts.md` | 6a | `view-complete` | time-sessions, overtime |
 
 ## Build Order
 
@@ -88,7 +88,7 @@ Reference data modules — CRUD patterns established here.
 - ✅ Phase 2 Admin Setup (Locations, Charge Codes, Job Roles, Users + Profile)
 - ✅ Phase 4 Core Timekeeping view layer (User Shifts, Time Sessions, Overtime)
 - ✅ Phase 5 Reporting view layer (Time Sheets, OT Requests, Employees, Summary Sheet)
-- 🔲 Phase 6 Notifications view layer (Alerts) ← next
+- ✅ Phase 6 Notifications view layer (Alerts)
 - 🔲 Phase 3 Auth view layer (Login page, PIN entry) ← after all feature views
 
 **Build sequence within each phase**:

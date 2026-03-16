@@ -307,6 +307,7 @@ Phase 6 (Notifications): alerts
 - **5b Overtime Requests** (view layer): OvertimeRequestsPage, ReviewDialog — pending/all tabs, FilterBar, approve/reject with notes (rejection requires note)
 - **5c Employees** (view layer): EmployeesPage — StatCards, DataTable with hours/status/OT columns, location+role filters, row click → time sessions
 - **5d Summary Sheet** (view layer): SummarySheetPage, SummaryTable — expandable employee×day grid, charge code breakdown, OT highlights, CSV export
+- **6a Alerts** (view layer): AlertsPage, AlertsList, AlertConfigPanel — notifications/config tabs, mark read, type/status filters, admin threshold editing
 
 ### Running the Project
 ```bash
@@ -343,7 +344,8 @@ frontend/src/
     ├── timeSheets/    # 5a — TimeSheetsPage, EmployeeTimeCard, EntryEditDialog (view layer ✅)
     ├── overtimeRequests/ # 5b — OvertimeRequestsPage, ReviewDialog (view layer ✅)
     ├── employees/     # 5c — EmployeesPage (view layer ✅)
-    └── summarySheet/  # 5d — SummarySheetPage, SummaryTable (view layer ✅)
+    ├── summarySheet/  # 5d — SummarySheetPage, SummaryTable (view layer ✅)
+    └── alerts/        # 6a — AlertsPage, AlertsList, AlertConfigPanel (view layer ✅)
 
 server/src/
 ├── config/           # Environment configuration
@@ -358,5 +360,6 @@ Last updated: 2026-03-13
 **Phase 2 view layer**: ✅ Complete (Locations, Charge Codes, Job Roles, Users)
 **Phase 4 view layer**: ✅ Complete (User Shifts, Time Sessions, Overtime)
 **Phase 5 view layer**: ✅ Complete (Time Sheets, Overtime Requests, Employees, Summary Sheet)
-**Next step**: Phase 6 view layer — Alerts (6a)
-**Then**: OT Requests (5b) → Employees (5c) → Summary Sheet (5d) → Phase 6 (Alerts) → Phase 3 Auth views → API wiring pass
+**Phase 6 view layer**: ✅ Complete (Alerts)
+**Next step**: Phase 3 Auth views → API wiring pass
+**All view layers complete** — every module (Phases 2–6) has its view layer built with mock data.

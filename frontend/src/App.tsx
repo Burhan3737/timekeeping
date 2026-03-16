@@ -12,18 +12,8 @@ import { TimeSheetsPage } from '@modules/timeSheets'
 import { OvertimeRequestsPage } from '@modules/overtimeRequests'
 import { EmployeesPage } from '@modules/employees'
 import { SummarySheetPage } from '@modules/summarySheet'
+import { AlertsPage } from '@modules/alerts'
 import { ThemeProvider } from '@core/theme'
-
-// Placeholder for unbuilt pages — replace with real component imports as modules are built
-// Nav structure (labels, icons, paths) is defined in: src/core/routing/navigationConfig.ts
-function ComingSoon({ title }: { title: string }) {
-  return (
-    <div style={{ padding: 32, color: '#94a3b8' }}>
-      <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500, margin: 0 }}>{title}</h2>
-      <p style={{ fontFamily: 'Inter, sans-serif', marginTop: 8 }}>Coming soon</p>
-    </div>
-  )
-}
 
 function App() {
   return (
@@ -43,7 +33,7 @@ function App() {
           <Route path="/reporting/overtime-requests" element={<OvertimeRequestsPage />} />
           <Route path="/reporting/employees" element={<EmployeesPage />} />
           <Route path="/reporting/summary-sheet" element={<SummarySheetPage />} />
-          <Route path="/reporting/alerts" element={<ComingSoon title="Alerts" />} />
+          <Route path="/reporting/alerts" element={<AlertsPage />} />
 
           {/* Setup */}
           <Route path="/setup/users" element={<UsersPage />} />
